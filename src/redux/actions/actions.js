@@ -6,3 +6,16 @@ export const setRecipes = (recipes) => {
         payload: recipes
     }
 }
+
+export const setSelectedRecipe = (recipe) => {
+    return {
+        type: actionTypes.SELECTED_RECIPE,
+        payload: recipe
+    }
+}
+
+export const removeSelected = () => {
+    return {
+        type: actionTypes.REMOVE_SELECTED_RECIPE
+    }
+}

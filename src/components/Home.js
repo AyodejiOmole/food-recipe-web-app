@@ -5,10 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { baseUrl } from '../App';
 import Skeleton from 'react-loading-skeleton';
 import { setRecipes } from '../redux/actions/actions';
+import RecipeCard from './RecipeCard';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const dispatch = useDispatch();
-    const { data, isLoading, error } = useQuery(["recipes"], async () => {
+    const { isLoading, error } = useQuery(["recipes"], async () => {
         const response = await axios.get(baseUrl);
         // return response.data;
         dispatch(setRecipes(response.data.meals));
@@ -18,14 +20,13 @@ const Home = () => {
     const recipes = useSelector(state => state.recipes.recipes);
     console.log(recipes);
 
-    console.log(data);
     if(isLoading) {
         return (
-            <div className='lg:flex lg:flex-wrap justify-center px-10 w-full lg:px-20'>
-                <Skeleton className='lg:w-1/4 w-full' height={400}/>
-                <Skeleton className='lg:w-1/4 w-full' height={400}/>
-                <Skeleton className='lg:w-1/4 w-full' height={400}/>
-                <Skeleton className='lg:w-1/4 w-full' height={400}/>
+            <div className='lg:flex lg:flex-wrap justify-center w-full'>
+                <Skeleton className='lg:w-1/4 w-full mx-5' height={400} width={300}/>
+                <Skeleton className='lg:w-1/4 w-full mx-5' height={400} width={300}/>
+                <Skeleton className='lg:w-1/4 w-full mx-5' height={400} width={300}/>
+                <Skeleton className='lg:w-1/4 w-full mx-5' height={400} width={300}/>
             </div>
         )
     }
@@ -35,10 +36,10 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <div className='recipe-container'>
             {recipes.map((recipe) => {
                 return (
-                    <div key={recipe.idMeal}>{recipe.idMeal}</div>
+                    <RecipeCard key={recipe.idMeal} image={recipe.strMealThumb} title={recipe.strMeal} source={recipe.strSource} idMeal={recipe.idMeal}/>
                 )
             })}
         </div>

@@ -14,15 +14,13 @@ export const recipesReducer = (state = initialState, { type, payload }) => {
     }
 }
 
-const searchedInitialState = {
-    searchedRecipes: []
-}
-export const searchedRecipeReducer = ( state = searchedInitialState, { type, payload }) => {
+
+export const selectedRecipeReducer = ( state = {}, { type, payload }) => {
     switch(type) {
-        case actionTypes.SET_SEARCHED_RECIPE:
-            return {...state, searchedRecipes: payload }
-        case actionTypes.REMOVE_SEARCHED_RECIPE:
-            return {...state, searchedRecipes: []}
+        case actionTypes.SELECTED_RECIPE:
+            return {...state, ...payload }
+        case actionTypes.REMOVE_SELECTED_RECIPE:
+            return { }
         default:
             return state;
     }
