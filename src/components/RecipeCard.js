@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const RecipeCard = (props) => {
-    const { image, title, source, idMeal } = props;
+    const { image, title, source, idMeal, category} = props;
 
     return (
         <div className="card shadow-lg">
@@ -10,7 +10,7 @@ const RecipeCard = (props) => {
 
             <p className="recipe-title">{title}</p>
 
-            <a href={source}>Check out the recipe here.</a>
+            <p className="category"> {category} </p>
 
             <Link to={`/food-recipe/${idMeal}`}>
                 <div className="ing-btn">View Ingredients</div>
