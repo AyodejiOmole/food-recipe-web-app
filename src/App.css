@@ -52,7 +52,6 @@
 
 .ing-btn:hover {
     background-color: aliceblue;
-    /* color: antiquewhite; */
     border: 2px solid antiquewhite;
 }
 
@@ -63,3 +62,174 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.loading-recipes {
+    margin: 80px auto;
+    width: 50%;
+}
+
+.details-box {
+    margin: 50px auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+    border-radius: 10px;
+    box-shadow: inset;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px;
+}
+
+.meal-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.name-box {
+    text-align: center;
+}
+
+.name-box h2 {
+    font-weight: 800;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 15px;   
+}
+
+.name-box p {
+    font-size: medium;
+    opacity: 0.9;
+    font-weight: 600;
+    margin: 10px 0px 10px 0px;
+}
+
+#tag-box {
+    margin: 20px auto;
+    width: 100%;
+}
+
+#tag-box h2 {
+    font-weight: 800;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10px;   
+}
+
+#tag-box p {
+    font-size: medium;
+    opacity: 0.9;
+    font-weight: 600;
+    margin: 10px 0px 5px 0px;
+}
+
+#instructions-box {
+    margin: 5px 0px 10px 0px;
+}
+
+#instructions-box > h2 {
+    font-weight: 800;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 15px;
+}
+
+#instructions-box > p {
+    opacity: 0.6;
+    font-size: medium;
+    width: 100%;
+    font-weight: 200;
+}
+
+.ingredients-box {
+    width: 100%;
+    margin: 15px 0px;
+}
+
+.ingredients-box > div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ingredients-box > h2 {
+    font-weight: 800;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 15px;   
+}
+
+.ingredient {
+    border-radius: 20px;
+    background-color: aliceblue;
+    padding: 2px 10px;
+    margin: 10px 5px;
+}
+
+.links-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    border-top: 1px solid black;
+}
+
+.links-box a:hover {
+    text-decoration: underline;
+}
+
+.links-box a {
+    font-size: medium;
+}
+
+.links-box > div {
+    margin: 0px 10px;
+}
+
+.youtube-svg {
+    width: 20px;
+    height: 20px;
+    margin: auto 0px;
+    fill: black;
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+}
+
+.youtube-svg:hover {
+    fill: red;
+}
+
+@media screen and (max-width: 900px) {
+    .details-box {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 720px ) {
+    body {
+        margin: 0px 20px;
+    }
+
+    .loading-recipes {
+        width: 100%;
+        border: 1px solid red;
+    }
+
+    .links-box {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .details-box {
+        width: 100%;
+    }
+
+    .loading-recipes {
+        width: 100%;
+        margin: 80px 20px;
+    }
+}
+
