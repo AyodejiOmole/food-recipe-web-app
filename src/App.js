@@ -14,7 +14,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/food-recipe/:foodId" element={<FoodRecipe/>}/>
-            {/* <Route path="/" element={}/> */}
           </Routes>
         </Router>
       </QueryClientProvider>

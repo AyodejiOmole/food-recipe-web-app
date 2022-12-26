@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,12 +7,13 @@ import Skeleton from 'react-loading-skeleton';
 import { setRecipes } from '../redux/actions/actions';
 import RecipeCard from './RecipeCard';
 import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const Home = () => {
+    const [url, setUrl] =  useState(`${baseUrl}`);
     const dispatch = useDispatch();
-    const { isLoading, error } = useQuery(["recipes"], async () => {
-        const response = await axios.get(baseUrl);
-        // return response.data;
+    const { isLoading, error, refetch } = useQuery(["recipes"], async () => {
+        const response = await axios.get(url);
         dispatch(setRecipes(response.data.meals));
         return response;
     });
@@ -35,13 +36,24 @@ const Home = () => {
         return <div>An error occured.</div>
     }
 
+    const handleChange = (event) => {
+        console.log(event.target.value);
+        refetch();
+        setUrl(`${baseUrl}${event.target.value}`);
+    }
+
     return (
-        <div className='recipe-container'>
-            {recipes.map((recipe) => {
-                return (
-                    <RecipeCard key={recipe.idMeal} category={recipe.strCategory} image={recipe.strMealThumb} title={recipe.strMeal} source={recipe.strSource} idMeal={recipe.idMeal}/>
-                )
-            })}
+        <div>
+            <Navbar handleChange={handleChange}/>
+            <div className='recipe-container'>
+                {recipes?.map((recipe) => {
+                    return (
+                        <RecipeCard key={recipe.idMeal} category={recipe.strCategory} image={recipe.strMealThumb} title={recipe.strMeal} source={recipe.strSource} idMeal={recipe.idMeal}/>
+                    )
+                })}
+
+                {recipes === null ? <p>Not found</p> : <p></p>}
+            </div>
         </div>
     )
 }
